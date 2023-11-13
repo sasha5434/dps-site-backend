@@ -100,7 +100,7 @@ async function uploadReq(fastify, options) {
 			.valueOf(),
 		headers: (
 			S.object()
-				.prop(authHeader, S.string().minLength(20).maxLength(50))
+				.prop(authHeader, S.string().minLength((apiConfig.allowAnonymousUpload) ? 0 : 20).maxLength(50))
 		)
 			.valueOf(),
 		response: {
@@ -347,8 +347,8 @@ async function uploadReq(fastify, options) {
 		//allowUploadTimeline(`${header}-${runId}`);
 
 		return { 
-			id: `https://teralogs.com/details/${runId}`,
-			//timelineLink: `https://teralogs.com/v1/upload/timeline/${runId}`
+			id: `https://teralogs.tera-asura.ru/details/${runId}`,
+			//timelineLink: `https://teralogs.tera-asura.ru/v1/upload/timeline/${runId}`
 		};
 	});
 	
